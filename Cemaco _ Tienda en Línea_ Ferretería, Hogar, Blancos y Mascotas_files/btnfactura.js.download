@@ -1,0 +1,21 @@
+let waitForBtnFactura = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve($(".f6.link.no-underline"))
+    }, 2000);
+  })
+};
+
+let ocultarBtn = async() => {
+  try {
+    let hide = await waitForBtnFactura
+    console.log('WaitBtnFactura');
+    console.log(hide);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+ocultarBtn()
+
+

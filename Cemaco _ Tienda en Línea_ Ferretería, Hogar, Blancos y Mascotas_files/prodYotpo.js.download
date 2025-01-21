@@ -1,0 +1,29 @@
+console.log('Spec SKU');
+
+const linksEstrellasDesfasadas = [
+  "https://www.cemaco.com/style-perfect-extra-white-mate-5-galones-sherwin-williams-667020/p",
+  "https://www.cemaco.com/superpaint-exter-extra-white-mate-5-gal-sherwin-williams-892722/p",
+];
+
+for (let index = 0; index < linksEstrellasDesfasadas.length; index++) {
+  if (window.location.href.indexOf(linksEstrellasDesfasadas[index]) > -1) {
+    console.log("Entra a producto especifico");
+    var head = document.getElementsByTagName("head")[0];
+    var link = document.createElement("link");
+    link.href =
+      "https://cemacogt.vteximg.com.br/arquivos/yotpoSku.css?v=20240426-1419";
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.media = "screen,print";
+    head.appendChild(link);
+  } else {
+    var head = document.getElementsByTagName("head")[0];
+    var link2 = document.createElement("link");
+    link2.href =
+      "https://cemacogt.vteximg.com.br/arquivos/yotpoStars.css?v=20240426-1511";
+    link2.type = "text/css";
+    link2.rel = "stylesheet";
+    link2.media = "screen,print";
+    head.appendChild(link2);
+  }
+}
