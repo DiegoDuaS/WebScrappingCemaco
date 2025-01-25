@@ -8,14 +8,25 @@ def cargar_html(archivo):
 
 # Buscar productos y URLs de imágenes
 def extraer_productos(html):
-    regex_nombre = r'<span class="vtex-product-summary-2-x-productBrand vtex-product-summary-2-x-brandName t-body">([\s\S]*?)<\/span>'
-    regex_imagen = r'<img[^>]*src="([^"]+)"'
+    regex_item = r'"item":\s*({(?:[^{}]|\{.*?\})*})'
+    matches = re.findall(regex_item, html, re.DOTALL)
+    result = ""
     
-    nombres = re.findall(regex_nombre, html)
-    imagenes = re.findall(regex_imagen, html)
-    
-    # Combinar resultados, asegurando que ambas listas tengan la misma longitud
-    return list(zip(nombres, imagenes))
+    for match in matches:
+        if match:
+            # Extraer nombre e imagen con regex
+            regex_name = r'"name"\s*:\s*"([^"]+)"'
+            regex_image = r'"image"\s*:\s*"([^"]+)"'
+            
+            name_match = re.search(regex_name, match)
+            image_match = re.search(regex_image, match)
+            
+            name = name_match.group(1) if name_match else None
+            image = image_match.group(1) if image_match else None
+
+            result += f"{name}, {image}\n"
+        
+    return result
 
 # Exportar resultados a CSV
 def exportar_csv(productos, archivo_salida):
