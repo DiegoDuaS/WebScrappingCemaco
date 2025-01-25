@@ -10,7 +10,7 @@ def cargar_html(archivo):
 def extraer_productos(html):
     regex_item = r'"item":\s*({(?:[^{}]|\{.*?\})*})'
     matches = re.findall(regex_item, html, re.DOTALL)
-    result = ""
+    productos = []
     
     for match in matches:
         if match:
@@ -24,9 +24,9 @@ def extraer_productos(html):
             name = name_match.group(1) if name_match else None
             image = image_match.group(1) if image_match else None
 
-            result += f"{name}, {image}\n"
+            productos.append((name, image))
         
-    return result
+    return productos
 
 # Exportar resultados a CSV
 def exportar_csv(productos, archivo_salida):
