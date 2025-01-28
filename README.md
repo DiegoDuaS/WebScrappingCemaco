@@ -20,7 +20,7 @@ Para ejecutar este proyecto, asegúrate de tener instalado:
 1. **Copiar el Repositorio**  
    Copia el repositorio en tu maquina con este comando:
 ```bash
-git clone https://github.com/usuario/nombre-repositorio.git
+git clone https://github.com/DiegoDuaS/WebScrappingCemaco
 ```
 
 2. Ejecuta el archivo `webScrapping.py` en tu terminal o entorno de desarrollo:
